@@ -1,0 +1,47 @@
+Crime_Type,Severity_Level,Date,Time,Day_of_Week,Month,Year,Time_Slot,City,State,Police_Station_Area,Age_Group_Mostly_Affected,Population_Density,Previous_Crimes_Area,Police_Station_Distance,Patrol_Intensity,Victim_Gender,city_norm,state_norm,expected_lat,expected_lon,dist_to_expected_km,matched_type,Latitude_fixed,Longitude_fixed
+Murder,High,29-11-2025,09:01,Saturday,November,2025,Morning,Delhi,Delhi,North,Adult (36-55),29700,65,9.44,Medium,Male,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Cybercrime,Low,29-11-2025,14:55,Saturday,November,2025,Afternoon,Hyderabad,Telangana,Central,Adult (36-55),18500,24,3.18,Medium,Male,hyderabad,telangana,17.385,78.4867,0.0,city_only,17.385,78.4867
+Theft,Low,27-11-2025,08:39,Thursday,November,2025,Morning,Delhi,Delhi,Central,Child (0-12),29700,28,2.72,Low,Other,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Murder,High,28-11-2025,14:45,Friday,November,2025,Afternoon,Mumbai,Maharashtra,North,Adult (36-55),31700,75,8.77,High,Other,mumbai,maharashtra,19.076,72.8777,0.0,city_only,19.076,72.8777
+Assault,Low,13-11-2025,08:00,Thursday,November,2025,Morning,Delhi,Delhi,West,Young Adult (20-35),29700,39,1.33,Medium,Male,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,29-11-2025,13:25,Saturday,November,2025,Afternoon,Delhi,Delhi,West,Teen (13-19),29700,40,8.45,Low,Female,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,01-10-2025,07:00,Wednesday,October,2025,Morning,Mumbai,Maharashtra,Central,Adult (36-55),31700,15,6.04,Medium,Female,mumbai,maharashtra,19.076,72.8777,0.0,city_only,19.076,72.8777
+Theft,Low,01-10-2025,07:00,Wednesday,October,2025,Morning,Mumbai,Maharashtra,North,Adult (36-55),31700,75,7.18,Low,Female,mumbai,maharashtra,19.076,72.8777,0.0,city_only,19.076,72.8777
+Murder,High,07-11-2025,08:00,Friday,November,2025,Morning,Delhi,Delhi,North,Senior (56+),29700,19,4.15,Low,Other,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,31-07-2025,07:00,Thursday,July,2025,Morning,Delhi,Delhi,South,Young Adult (20-35),29700,46,7.34,Medium,Female,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,05-10-2025,07:00,Sunday,October,2025,Morning,Kolkata,West Bengal,Central,Child (0-12),24300,12,2.81,High,Female,kolkata,west bengal,22.5726,88.3639,0.0,city_only,22.5726,88.3639
+Theft,Low,28-11-2025,12:35,Friday,November,2025,Afternoon,Delhi,Delhi,Central,Young Adult (20-35),29700,30,6.88,High,Male,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,02-10-2025,07:00,Thursday,October,2025,Morning,Pune,Maharashtra,East,Adult (36-55),6600,54,3.37,Medium,Female,pune,maharashtra,18.5204,73.8567,0.0,city_only,18.5204,73.8567
+Theft,Low,30-09-2025,07:00,Tuesday,September,2025,Morning,Delhi,Delhi,North,Senior (56+),29700,8,2.48,Low,Female,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,27-11-2025,18:49,Thursday,November,2025,Evening,Delhi,Delhi,East,Senior (56+),29700,66,9.98,Medium,Female,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,30-09-2025,07:00,Tuesday,September,2025,Morning,Mumbai,Maharashtra,East,Teen (13-19),31700,50,5.25,Low,Female,mumbai,maharashtra,19.076,72.8777,0.0,city_only,19.076,72.8777
+Theft,Low,03-11-2025,08:00,Monday,November,2025,Morning,Delhi,Delhi,East,Teen (13-19),29700,34,3.34,High,Other,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,28-09-2025,07:00,Sunday,September,2025,Morning,Hyderabad,Telangana,East,Young Adult (20-35),18500,56,2.85,High,Male,hyderabad,telangana,17.385,78.4867,0.0,city_only,17.385,78.4867
+Theft,Low,29-11-2025,20:53,Saturday,November,2025,Evening,Delhi,Delhi,Central,Teen (13-19),29700,23,8.41,Medium,Other,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,04-11-2025,14:13,Tuesday,November,2025,Afternoon,Delhi,Delhi,West,Adult (36-55),29700,32,3.32,Low,Female,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Murder,High,27-10-2025,15:49,Monday,October,2025,Afternoon,Delhi,Delhi,East,Child (0-12),29700,27,7.06,High,Male,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Murder,High,21-10-2025,15:25,Tuesday,October,2025,Afternoon,Delhi,Delhi,North,Senior (56+),29700,20,1.12,Medium,Female,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Murder,High,21-10-2025,13:54,Tuesday,October,2025,Afternoon,Delhi,Delhi,Central,Teen (13-19),29700,23,2.11,High,Other,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Sexual Assault,Low,17-10-2025,13:39,Friday,October,2025,Afternoon,Delhi,Delhi,South,Adult (36-55),29700,36,8.81,Low,Other,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,08-10-2025,19:13,Wednesday,October,2025,Evening,Delhi,Delhi,West,Young Adult (20-35),29700,72,6.8,Medium,Other,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Murder,High,11-09-2025,13:03,Thursday,September,2025,Afternoon,Hyderabad,Telangana,North,Senior (56+),18500,73,4.65,Medium,Other,hyderabad,telangana,17.385,78.4867,0.0,city_only,17.385,78.4867
+Sexual Assault,Low,08-09-2025,07:11,Monday,September,2025,Morning,Kolkata,West Bengal,South,Senior (56+),24300,17,6.62,Medium,Female,kolkata,west bengal,22.5726,88.3639,0.0,city_only,22.5726,88.3639
+Theft,Low,03-09-2025,13:36,Wednesday,September,2025,Afternoon,Delhi,Delhi,West,Teen (13-19),29700,62,7.39,Medium,Other,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,30-09-2025,21:11,Tuesday,September,2025,Night,Delhi,Delhi,West,Young Adult (20-35),29700,56,9.28,High,Male,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,24-09-2025,23:21,Wednesday,September,2025,Night,Delhi,Delhi,South,Teen (13-19),29700,23,9.32,Medium,Female,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,13-09-2025,19:02,Saturday,September,2025,Evening,Delhi,Delhi,Central,Child (0-12),29700,38,8.65,High,Other,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,29-11-2025,21:32,Saturday,November,2025,Night,Delhi,Delhi,East,Adult (36-55),29700,36,7.46,High,Male,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,26-11-2025,23:23,Wednesday,November,2025,Night,Delhi,Delhi,East,Teen (13-19),29700,34,5.58,High,Female,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,30-11-2025,02:35,Sunday,November,2025,Night,Hyderabad,Telangana,South,Young Adult (20-35),18500,75,4.27,Medium,Female,hyderabad,telangana,17.385,78.4867,0.0,city_only,17.385,78.4867
+Theft,Low,30-11-2025,02:00,Sunday,November,2025,Night,Delhi,Delhi,East,Young Adult (20-35),29700,39,4.53,High,Male,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,30-11-2025,16:32,Sunday,November,2025,Afternoon,Jaipur,Rajasthan,Central,Teen (13-19),6500,51,4.62,Medium,Other,jaipur,rajasthan,26.9124,75.7873,0.0,city_only,26.9124,75.7873
+Theft,Low,13-11-2025,08:00,Thursday,November,2025,Morning,Delhi,Delhi,North,Adult (36-55),29700,50,2.97,High,Male,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,30-11-2025,18:31,Sunday,November,2025,Evening,Delhi,Delhi,Central,Young Adult (20-35),29700,71,3.55,High,Female,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,30-11-2025,19:21,Sunday,November,2025,Evening,Delhi,Delhi,South,Adult (36-55),29700,11,1.3,High,Male,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Sexual Assault,Low,27-01-2026,15:09,Tuesday,January,2026,Afternoon,Delhi,Delhi,Central,Child (0-12),29700,29,7.99,High,Male,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,27-01-2026,13:18,Tuesday,January,2026,Afternoon,Delhi,Delhi,North,Senior (56+),29700,80,3.92,High,Female,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,26-01-2026,14:12,Monday,January,2026,Afternoon,Mumbai,Maharashtra,South,Adult (36-55),31700,64,7.75,Low,Female,mumbai,maharashtra,19.076,72.8777,0.0,city_only,19.076,72.8777
+Theft,Low,19-12-2025,08:00,Friday,December,2025,Morning,Delhi,Delhi,North,Young Adult (20-35),29700,24,3.06,Low,Male,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Assault,Low,27-01-2026,08:23,Tuesday,January,2026,Morning,Pune,Maharashtra,West,Teen (13-19),6600,43,9.72,High,Other,pune,maharashtra,18.5204,73.8567,0.0,city_only,18.5204,73.8567
+Theft,Low,18-11-2025,08:00,Tuesday,November,2025,Morning,Delhi,Delhi,West,Adult (36-55),29700,61,8.46,High,Male,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209
+Theft,Low,28-01-2026,03:44,Wednesday,January,2026,Night,Delhi,Delhi,South,Young Adult (20-35),29700,28,3.31,Medium,Male,delhi,delhi,28.6139,77.209,0.0,city_only,28.6139,77.209

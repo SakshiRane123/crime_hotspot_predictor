@@ -1,0 +1,282 @@
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import axios from 'axios';
+
+const InputForm = ({ onPredictionResult }) => {
+  const [formData, setFormData] = useState({
+    City: '',
+    Latitude: '',
+    Longitude: '',
+    Population_Density: '',
+    Previous_Crimes_Area: '',
+    Police_Station_Distance: '',
+    Patrol_Intensity: 'Medium',
+    State: 'Maharashtra',
+    Day_of_Week: '',
+    Month: '',
+    Time_Slot: ''
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // Auto-fill time-based fields
+    const now = new Date();
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                    'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    const hour = now.getHours();
+    let timeSlot;
+    if (hour >= 5 && hour < 12) timeSlot = 'Morning';
+    else if (hour >= 12 && hour < 17) timeSlot = 'Afternoon';
+    else if (hour >= 17 && hour < 21) timeSlot = 'Evening';
+    else timeSlot = 'Night';
+
+    setFormData(prev => ({
+      ...prev,
+      Day_of_Week: days[now.getDay()],
+      Month: months[now.getMonth()],
+      Time_Slot: timeSlot
+    }));
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const getMyLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setFormData(prev => ({
+            ...prev,
+            Latitude: position.coords.latitude.toFixed(6),
+            Longitude: position.coords.longitude.toFixed(6)
+          }));
+        },
+        (error) => {
+          alert('Error getting location: ' + error.message);
+        }
+      );
+    } else {
+      alert('Geolocation is not supported by your browser');
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await axios.post('http://localhost:5000/predict', {
+        ...formData,
+        Population_Density: parseInt(formData.Population_Density),
+        Previous_Crimes_Area: parseInt(formData.Previous_Crimes_Area),
+        Police_Station_Distance: parseFloat(formData.Police_Station_Distance),
+        Latitude: parseFloat(formData.Latitude),
+        Longitude: parseFloat(formData.Longitude)
+      });
+
+      onPredictionResult({
+        ...response.data,
+        location: {
+          city: formData.City,
+          lat: parseFloat(formData.Latitude),
+          lng: parseFloat(formData.Longitude)
+        },
+        timestamp: new Date().toISOString()
+      });
+    } catch (error) {
+      console.error('Error making prediction:', error);
+      alert('Error making prediction. Please ensure the backend server is running.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <motion.form
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      onSubmit={handleSubmit}
+      className="bg-gradient-to-br from-white to-blue-50 p-8 rounded-2xl shadow-2xl border border-blue-100"
+    >
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent mb-2">
+          Crime Hotspot Prediction
+        </h2>
+        <p className="text-gray-600 text-sm">Enter location details to predict crime hotspot severity</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Auto-filled Time Fields */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Day of Week</label>
+          <input
+            type="text"
+            name="Day_of_Week"
+            value={formData.Day_of_Week}
+            readOnly
+            className="w-full px-4 py-3 border-2 border-blue-200 rounded-xl bg-blue-50 text-blue-900 font-semibold"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Month</label>
+          <input
+            type="text"
+            name="Month"
+            value={formData.Month}
+            readOnly
+            className="w-full px-4 py-3 border-2 border-blue-200 rounded-xl bg-blue-50 text-blue-900 font-semibold"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Time Slot</label>
+          <input
+            type="text"
+            name="Time_Slot"
+            value={formData.Time_Slot}
+            readOnly
+            className="w-full px-4 py-3 border-2 border-blue-200 rounded-xl bg-blue-50 text-blue-900 font-semibold"
+          />
+        </div>
+
+        {/* Manual Input Fields */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
+          <input
+            type="text"
+            name="City"
+            value={formData.City}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-200 hover:border-gray-400"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Latitude</label>
+          <input
+            type="number"
+            step="any"
+            name="Latitude"
+            value={formData.Latitude}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary outline-none"
+            required
+          />
+        </div>
+
+        <div className="flex items-end gap-2">
+          <div className="flex-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Longitude</label>
+            <input
+              type="number"
+              step="any"
+              name="Longitude"
+              value={formData.Longitude}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary outline-none"
+              required
+            />
+          </div>
+          <button
+            type="button"
+            onClick={getMyLocation}
+            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm whitespace-nowrap"
+          >
+            📍 Get Location
+          </button>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Population Density</label>
+          <input
+            type="number"
+            name="Population_Density"
+            value={formData.Population_Density}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary outline-none"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Previous Crimes in Area</label>
+          <input
+            type="number"
+            name="Previous_Crimes_Area"
+            value={formData.Previous_Crimes_Area}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary outline-none"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Police Station Distance (km)</label>
+          <input
+            type="number"
+            step="0.1"
+            name="Police_Station_Distance"
+            value={formData.Police_Station_Distance}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary outline-none"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Patrol Intensity</label>
+          <select
+            name="Patrol_Intensity"
+            value={formData.Patrol_Intensity}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary outline-none"
+          >
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">State</label>
+          <select
+            name="State"
+            value={formData.State}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary outline-none"
+          >
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="West Bengal">West Bengal</option>
+            <option value="Telangana">Telangana</option>
+          </select>
+        </div>
+      </div>
+
+      <motion.button
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        type="submit"
+        disabled={loading}
+        className="w-full mt-6 bg-primary hover:bg-blue-900 text-white font-semibold py-3 rounded-lg transition duration-200 disabled:bg-gray-400"
+      >
+        {loading ? 'Predicting...' : '🔮 Predict Hotspot'}
+      </motion.button>
+    </motion.form>
+  );
+};
+
+export default InputForm;
